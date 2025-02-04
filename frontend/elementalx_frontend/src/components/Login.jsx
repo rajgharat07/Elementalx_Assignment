@@ -47,83 +47,66 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center my-10">
-      <div className="card bg-base-300 w-96 shadow-xl">
-        <div className="card-body">
-          <h2 className="card-title justify-center">
-            {isLoginForm ? "Login" : "Sign Up"}
-          </h2>
-          <div>
-            {!isLoginForm && (
-              <>
-                <label className="form-control w-full max-w-xs my-2">
-                  <div className="label">
-                    <span className="label-text">First Name</span>
-                  </div>
-                  <input
-                    type="text"
-                    value={firstName}
-                    className="input input-bordered w-full max-w-xs"
-                    onChange={(e) => setFirstName(e.target.value)}
-                  />
-                </label>
-                <label className="form-control w-full max-w-xs my-2">
-                  <div className="label">
-                    <span className="label-text">Last Name</span>
-                  </div>
-                  <input
-                    type="text"
-                    value={lastName}
-                    className="input input-bordered w-full max-w-xs"
-                    onChange={(e) => setLastName(e.target.value)}
-                  />
-                </label>
-              </>
-            )}
-            <label className="form-control w-full max-w-xs my-2">
-              <div className="label">
-                <span className="label-text">Email ID:</span>
-              </div>
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-teal-500 to-teal-900">
+      <div className="bg-gray-900 p-8 rounded-xl shadow-lg w-96 text-white relative">
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-teal-400 px-6 py-2 rounded-lg text-center font-bold text-gray-900">
+          {isLoginForm ? "SIGN IN" : "SIGN UP"}
+        </div>
+        <div className="flex justify-center my-6">
+          <div className="w-20 h-20 bg-gray-700 rounded-full flex items-center justify-center">
+            <span className="text-4xl">👤</span>
+          </div>
+        </div>
+        <div>
+          {!isLoginForm && (
+            <>
               <input
                 type="text"
-                value={emailId}
-                className="input input-bordered w-full max-w-xs"
-                onChange={(e) => setEmailId(e.target.value)}
+                placeholder="First Name"
+                value={firstName}
+                className="w-full p-3 mb-3 bg-gray-800 rounded focus:outline-none focus:ring-2 focus:ring-teal-400"
+                onChange={(e) => setFirstName(e.target.value)}
               />
-            </label>
-            <label className="form-control w-full max-w-xs my-2">
-              <div className="label">
-                <span className="label-text">Password</span>
-              </div>
               <input
-                type="password"
-                value={password}
-                className="input input-bordered w-full max-w-xs"
-                onChange={(e) => setPassword(e.target.value)}
+                type="text"
+                placeholder="Last Name"
+                value={lastName}
+                className="w-full p-3 mb-3 bg-gray-800 rounded focus:outline-none focus:ring-2 focus:ring-teal-400"
+                onChange={(e) => setLastName(e.target.value)}
               />
-            </label>
-          </div>
-          <p className="text-red-500">{error}</p>
-          <div className="card-actions justify-center m-2">
-            <button
-              className="btn btn-primary"
-              onClick={isLoginForm ? handleLogin : handleSignUp}
-            >
-              {isLoginForm ? "Login" : "Sign Up"}
-            </button>
-          </div>
-
-          <p
-            className="m-auto cursor-pointer py-2"
-            onClick={() => setIsLoginForm((value) => !value)}
-          >
-            {isLoginForm
-              ? "New User? Signup Here"
-              : "Existing User? Login Here"}
-          </p>
+            </>
+          )}
+          <input
+            type="text"
+            placeholder="Email ID"
+            value={emailId}
+            className="w-full p-3 mb-3 bg-gray-800 rounded focus:outline-none focus:ring-2 focus:ring-teal-400"
+            onChange={(e) => setEmailId(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            className="w-full p-3 mb-3 bg-gray-800 rounded focus:outline-none focus:ring-2 focus:ring-teal-400"
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
+        <p className="text-red-500 text-center mb-2">{error}</p>
+        <button
+          className="w-full bg-teal-400 text-gray-900 font-bold py-3 rounded hover:bg-teal-500"
+          onClick={isLoginForm ? handleLogin : handleSignUp}
+        >
+          {isLoginForm ? "LOGIN" : "SIGN UP"}
+        </button>
+        <p
+          className="text-center mt-4 cursor-pointer hover:underline"
+          onClick={() => setIsLoginForm((prev) => !prev)}
+        >
+          {isLoginForm ? "New User? Sign up here" : "Existing User? Sign in here"}
+        </p>
       </div>
     </div>
   );
 };
+
 export default Login;
